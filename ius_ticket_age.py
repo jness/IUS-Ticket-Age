@@ -45,18 +45,18 @@ Content-Type: text/html; charset="us-ascii"
 """
 
 print "-"*78
-print '%-8s %-10s %-5s %-10s %s' % ('#', 'Status', 'Age', 'Assignee', 'Subject')
+print '%-7s %-10s %-4s %-8s %s' % ('#', 'Status', 'Age', 'Assignee', 'Subject')
 print "-"*78
 
 for bug in sorted(bugs, key=lambda age: age[4]):
     delta = (now -  bug[4])
     if delta > timedelta(days = 60):
-        print '%-8s %-10s %-5s %-10s %s' % (
+        print '%-7s %-10s %-4s %-8s %s' % (
         bug[0], 
-        bug[1], 
+        bug[1][0:9], 
         delta.days, 
-        bug[2], 
-        '<a href="https://bugs.launchpad.net/ius/+bug/' + bug[0] + '">' + bug[3][0:40] + '</a>'
+        bug[2][0:7], 
+        '<a href="https://bugs.launchpad.net/ius/+bug/' + bug[0] + '">' + bug[3][0:49] + '</a>'
         )
 
 print '</pre>'
