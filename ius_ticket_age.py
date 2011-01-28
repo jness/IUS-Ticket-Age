@@ -29,16 +29,34 @@ for bug in iusbugs:
     subject = slim[0][1]
     lastupdate = bug.bug.date_last_updated.date()
     status = bug.status
+    messagecount = bug.bug.message_count
 
     # Add our data to the List
     bugs.append([id, status, assignee, subject, lastupdate])
 
 now = datetime.now().date()
-print "="*110
-print '%-10s %-15s %-15s %-60s %s' % ('#', 'Status', 'Assignee', 'Subject', 'Age')
-print "="*110
+
+print """To: user@domain.com 
+From: IUS Coredev <ius-coredev@lists.launchpad.net>
+Subject: IUS Bugs older than 60 days
+Content-Type: text/html; charset="us-ascii"
+
+<pre>
+"""
+
+print "-"*78
+print '%-8s %-10s %-5s %-10s %s' % ('#', 'Status', 'Age', 'Assignee', 'Subject')
+print "-"*78
 
 for bug in sorted(bugs, key=lambda age: age[4]):
     delta = (now -  bug[4])
     if delta > timedelta(days = 60):
-        print '%-10s %-15s %-15s %-60s %s' % (bug[0], bug[1], bug[2], bug[3], delta.days)
+        print '%-8s %-10s %-5s %-10s %s' % (
+        bug[0], 
+        bug[1], 
+        delta.days, 
+        bug[2], 
+        '<a href="https://bugs.launchpad.net/ius/+bug/' + bug[0] + '">' + bug[3][0:40] + '</a>'
+        )
+
+print '</pre>'
