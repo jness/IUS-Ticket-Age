@@ -1,0 +1,12 @@
+==============================================================================================================
+#          Status          Assignee        Subject                                                      Age
+==============================================================================================================
+585995     Triaged         derks           WL: php5x-pecl-memcached                                     245
+583505     Triaged                         WL: boost 1.43.0                                             226
+599970     New                             EOL: python26-mysqldb [moved to EPEL]                        213
+473814     New                             WL: ruby 1.9                                                 158
+610143     New                             WL: subversion16                                             158
+612659     New                             WL: gtk 2.14                                                 158
+640573     New                             WL: ImageMagick-6.6.4-2                                      134
+576752     Triaged         derks           WL: mod_rpaf                                                 129
+576754     New                             WL: python31-postgresql                                      129
